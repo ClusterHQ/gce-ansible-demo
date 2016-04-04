@@ -1,0 +1,6 @@
+- hosts: nodes
+  roles:
+    - role: marvinpinto.docker
+      sudo: true
+    - role: ClusterHQ.flocker
+      flocker_local_tempdir: "{{ playbook_dir }}/certs"

@@ -1,0 +1,6 @@
+virtual-env
+roles/
+certs/
+ansible_inventory
+agent.yml
+gce-flocker-installer.retry
