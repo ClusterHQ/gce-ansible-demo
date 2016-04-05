@@ -6,7 +6,8 @@ Engine. This is a new feature with Flocker 1.11.
 In order to complete this tutorial, you will need a few things:
 
 * A [Google Cloud Platform project](https://console.cloud.google.com/project)
-  with billing enabled (so you can use GCE).
+  with billing enabled (so you can use GCE). This should also work if you are
+  inside your 60 day free trial.
 * The [gcloud](https://cloud.google.com/sdk/downloads) command line tool
   installed.
 * Python 2.7 and virtualenv installed (`pip install virtualenv`).
@@ -15,16 +16,20 @@ In order to complete this tutorial, you will need a few things:
 
 The new GCE driver supports authentication by service accounts, including the
 default service account that is implicit to the VM. This means you don't have
-to ship your GCE credentials around to every node in your cluster, but you do have
-to give the VM permission to make API calls to Google Compute Engine. These
-credentials allow any process on the VM execute Google Compute Engine API
-calls. We will demonstrate how to do this as part of this tutorial.
+to ship your GCE credentials around to every node in your cluster, but you do
+have to give the VM permission to make API calls to Google Compute Engine.
+These credentials allow any process on the VM execute authenticated Google
+Compute Engine API calls. We will demonstrate how to do this as part of this
+tutorial.
 
 
-1. Set up a virtualenv so you don't pollute your global python packages:
+1. Set up a virtualenv in a clone of this repository so you don't pollute your
+   global python packages:
 
   ```bash
-  cd <new-directory-for-tutorial>
+  cd <demo-root-directory>
+  git clone https://github.com/ClusterHQ/gce-ansible-demo.git
+  cd gce-ansible-demo
   virtualenv ./virtual-env
   source ./virtual-env/bin/activate
   ```
