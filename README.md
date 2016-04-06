@@ -6,7 +6,8 @@ Engine. This is a new feature with Flocker 1.11.
 In order to complete this tutorial, you will need a few things:
 
 * A [Google Cloud Platform project](https://console.cloud.google.com/project)
-  with billing enabled (so you can use GCE).
+  with billing enabled (so you can use GCE). This should also work if you are
+  inside your 60 day free trial.
 * The [gcloud](https://cloud.google.com/sdk/downloads) command line tool
   installed.
 * Python 2.7 and virtualenv installed (`pip install virtualenv`).
@@ -15,16 +16,20 @@ In order to complete this tutorial, you will need a few things:
 
 The new GCE driver supports authentication by service accounts, including the
 default service account that is implicit to the VM. This means you don't have
-to ship your GCE credentials around to every node in your cluster, but you do have
-to give the VM permission to make API calls to Google Compute Engine. These
-credentials allow any process on the VM execute Google Compute Engine API
-calls. We will demonstrate how to do this as part of this tutorial.
+to ship your GCE credentials around to every node in your cluster, but you do
+have to give the VM permission to make API calls to Google Compute Engine.
+These credentials allow any process on the VM execute authenticated Google
+Compute Engine API calls. We will demonstrate how to do this as part of this
+tutorial.
 
 
-1. Set up a virtualenv so you don't pollute your global python packages:
+1. Set up a virtualenv in a clone of this repository so you don't pollute your
+   global python packages:
 
   ```bash
-  cd <new-directory-for-tutorial>
+  cd <demo-root-directory>
+  git clone https://github.com/ClusterHQ/gce-ansible-demo.git
+  cd gce-ansible-demo
   virtualenv ./virtual-env
   source ./virtual-env/bin/activate
   ```
@@ -113,12 +118,9 @@ calls. We will demonstrate how to do this as part of this tutorial.
   * [marvinpinto.docker](https://galaxy.ansible.com/marvinpinto/docker/)
   * [ClusterHQ.flocker](https://galaxy.ansible.com/ClusterHQ/flocker/)
 
-  TODO: Update Flocker pip install instructions to 1.11! Maybe refer to our
-  documentation link.
-
   ```bash
   pip install ansible
-  pip install https://clusterhq-archive.s3.amazonaws.com/python/Flocker-1.10.2-py2-none-any.whl
+  pip install https://clusterhq-archive.s3.amazonaws.com/python/Flocker-1.11.0-py2-none-any.whl
   ansible-galaxy install marvinpinto.docker -p ./roles
   ansible-galaxy install ClusterHQ.flocker -p ./roles
   ```
@@ -156,7 +158,7 @@ calls. We will demonstrate how to do this as part of this tutorial.
   ```
 
 9. Once that command finishes you should have a cluster up and running. Use
-   `flockerctl` to explore your cluster:
+   `flockerctl` to explore your cluster, using the certs in `./certs`:
 
   ```bash
   flockerctl --user api_user \
@@ -165,8 +167,9 @@ calls. We will demonstrate how to do this as part of this tutorial.
     list-nodes
   ```
 
-  At this point you should be able to use the certificates in ./certs to
-  interact with your cluster
+  From here use other `flockerctl` functions to create volumes, or set up your
+  favorite orchestration framework. You can even create volumes with different
+  profiles to see the profiles support in GCE.
 
 999. List any volumes you've created and delete them:
 
@@ -207,3 +210,19 @@ calls. We will demonstrate how to do this as part of this tutorial.
     --project $PROJECT \
     --zone $ZONE
   ```
+
+# A Video of this Demo
+(No sound)
+
+[![asciicast](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg.png)](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg)
+
+
+# Demo maintainers:
+
+A quick way to re-create the demo video is simply to run:
+
+```bash
+asciinema rec -c ./demo-script.sh -t gce-demo -w 4 out_file.asciinema
+```
+
+And then press spacebar at a reasonable interval.
