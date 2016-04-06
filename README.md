@@ -214,6 +214,6 @@ tutorial.
 # A Video of this Demo
 (No sound)
 
-[![asciicast](https://asciinema.org/a/6b8g230ncmzqhfob31i9zzfdz.png)](https://asciinema.org/a/6b8g230ncmzqhfob31i9zzfdz)
+[![asciicast](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg.png)](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg)
 
 
