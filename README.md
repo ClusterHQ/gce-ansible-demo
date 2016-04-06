@@ -217,3 +217,12 @@ tutorial.
 [![asciicast](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg.png)](https://asciinema.org/a/conaotsp1nrf128plmpqqqbjg)
 
 
+# Demo maintainers:
+
+A quick way to re-create the demo video is simply to run:
+
+```bash
+asciinema rec -c ./demo-script.sh -t gce-demo -w 4 out_file.asciinema
+```
+
+And then press spacebar at a reasonable interval.
