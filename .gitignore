@@ -4,3 +4,4 @@ certs/
 ansible_inventory
 agent.yml
 gce-flocker-installer.retry
+demo-magic.sh

@@ -118,12 +118,9 @@ tutorial.
   * [marvinpinto.docker](https://galaxy.ansible.com/marvinpinto/docker/)
   * [ClusterHQ.flocker](https://galaxy.ansible.com/ClusterHQ/flocker/)
 
-  TODO: Update Flocker pip install instructions to 1.11! Maybe refer to our
-  documentation link.
-
   ```bash
   pip install ansible
-  pip install https://clusterhq-archive.s3.amazonaws.com/python/Flocker-1.10.2-py2-none-any.whl
+  pip install https://clusterhq-archive.s3.amazonaws.com/python/Flocker-1.11.0-py2-none-any.whl
   ansible-galaxy install marvinpinto.docker -p ./roles
   ansible-galaxy install ClusterHQ.flocker -p ./roles
   ```
@@ -161,7 +158,7 @@ tutorial.
   ```
 
 9. Once that command finishes you should have a cluster up and running. Use
-   `flockerctl` to explore your cluster:
+   `flockerctl` to explore your cluster, using the certs in `./certs`:
 
   ```bash
   flockerctl --user api_user \
@@ -170,8 +167,9 @@ tutorial.
     list-nodes
   ```
 
-  At this point you should be able to use the certificates in ./certs to
-  interact with your cluster
+  From here use other `flockerctl` functions to create volumes, or set up your
+  favorite orchestration framework. You can even create volumes with different
+  profiles to see the profiles support in GCE.
 
 999. List any volumes you've created and delete them:
 
